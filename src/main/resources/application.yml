@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: java-kafka
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/java_kafka
+    username: postgres
+    password: postgres
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: group-id
+
+  docker:
+    compose:
+      enabled: false
+
+message:
+  topic:
+    name: topic
