@@ -13,10 +13,6 @@ public class KafkaErrorHandler implements CommonErrorHandler {
     /**
      * Handles exceptions thrown by non-batch Kafka message listeners.
      *
-     * @param exception     The exception thrown by the listener.
-     * @param consumer      The Kafka consumer.
-     * @param container     The message listener container.
-     * @param batchListener Indicates if the listener is a batch listener.
      */
     @Override
     public void handleOtherException(final Exception exception, final Consumer<?, ?> consumer, final MessageListenerContainer container, final boolean batchListener) {
@@ -26,11 +22,6 @@ public class KafkaErrorHandler implements CommonErrorHandler {
     /**
      * Handles exceptions thrown by batch Kafka message listeners.
      *
-     * @param exception The exception thrown by the listener.
-     * @param record    The consumer record that caused the exception.
-     * @param consumer  The Kafka consumer.
-     * @param container The message listener container.
-     * @return true indicating that the exception has been handled.
      */
     @Override
     public boolean handleOne(final Exception exception, final ConsumerRecord<?, ?> record, final Consumer<?, ?> consumer, final MessageListenerContainer container) {
@@ -41,8 +32,6 @@ public class KafkaErrorHandler implements CommonErrorHandler {
     /**
      * Handles the exception by logging it and taking appropriate actions.
      *
-     * @param exception The exception to handle.
-     * @param consumer  The Kafka consumer.
      */
     void handle(Exception exception, Consumer<?, ?> consumer) {
         log.error("Exception thrown", exception);
